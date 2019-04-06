@@ -1,12 +1,18 @@
-interface IElement {
+﻿interface IElement {
 	className?: string;
 	[name: string] : any;
+}
+interface IMenu {
+	width: number;
+	height: number;
+	title: string;
 }
 let salaries: IElement = {
 	"Вася" : 100,
 	"Петя" : 300,
 	"Даша" : 250
 };
+//====================================================================================
 // СУММА СВОЙТСВ
 let sumProp: number = 0;
 for (let i in salaries){
@@ -14,6 +20,7 @@ for (let i in salaries){
 }
 // Вывод результата
 console.log("Всего: " + sumProp);
+//====================================================================================
 // МАКСИМАЛЬНАЯ ЗАРПЛАТА
 let maxSalary: number = 0;
 let nameEmpl: string = " ";
@@ -28,6 +35,28 @@ if (name != " ")
 	console.log(`Самая высокая зарплата у сотрудника ${nameEmpl}`);
 else
 	console.log("Нет сотрудников.");
+//====================================================================================
+// УМНОЖЕНИЕ СВОЙСТВ НА 2
+let menu: IMenu = {
+	width: 200,
+	height: 300,
+	title: "My menu"
+};
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n)
+}
+// описание ф-ции, выполняющей перемножение свойств
+function multiplyNumeric(obj: IMenu): IMenu{
+	for (let param in obj)
+		if(isNumeric(obj[param]))
+			obj[param] *= 2;
+	return obj;
+}
+// вывод содержимого объекта menu
+console.log(`menu = { \n\twidth = ${menu.width},\n\theight = ${menu.height},\n\ttitle = ${menu.title} \n }`);
+// вывод результата выполнения функции
+console.log(multiplyNumeric(menu));
+//====================================================================================
 // ФУНКЦИЯ countBy
 function countBy(step: number, length: number): number[]{
 	// Проверка параметра 
@@ -47,7 +76,7 @@ let rezult: number[] = countBy(1, 10);
 let rezult1: number[] = countBy(2, 5);
 console.log("countBy(1, 10) = [" + rezult.join(", ") + " ]");
 console.log("countBy(2, 5) = [" + rezult1.join(", ") + " ]");
-
+//====================================================================================
 //ДОБАВИТЬ КЛАСС В СТРОКУ
 let obj: IElement = {className: 'open menu'}; 
 function addClass(obj: IElement, cls: string): IElement{

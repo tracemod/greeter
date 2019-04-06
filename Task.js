@@ -3,6 +3,7 @@ var salaries = {
     "Петя": 300,
     "Даша": 250
 };
+//====================================================================================
 // СУММА СВОЙТСВ
 var sumProp = 0;
 for (var i in salaries) {
@@ -10,6 +11,7 @@ for (var i in salaries) {
 }
 // Вывод результата
 console.log("Всего: " + sumProp);
+//====================================================================================
 // МАКСИМАЛЬНАЯ ЗАРПЛАТА
 var maxSalary = 0;
 var nameEmpl = " ";
@@ -24,6 +26,28 @@ if (name != " ")
     console.log("\u0421\u0430\u043C\u0430\u044F \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u0437\u0430\u0440\u043F\u043B\u0430\u0442\u0430 \u0443 \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u0430 " + nameEmpl);
 else
     console.log("Нет сотрудников.");
+//====================================================================================
+// УМНОЖЕНИЕ СВОЙСТВ НА 2
+var menu = {
+    width: 200,
+    height: 300,
+    title: "My menu"
+};
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+// описание ф-ции, выполняющей перемножение свойств
+function multiplyNumeric(obj) {
+    for (var param in obj)
+        if (isNumeric(obj[param]))
+            obj[param] *= 2;
+    return obj;
+}
+// вывод содержимого объекта menu
+console.log("menu = { \n\twidth = " + menu.width + ",\n\theight = " + menu.height + ",\n\ttitle = " + menu.title + " \n }");
+// вывод результата выполнения функции
+console.log(multiplyNumeric(menu));
+//====================================================================================
 // ФУНКЦИЯ countBy
 function countBy(step, length) {
     // Проверка параметра 
@@ -43,6 +67,7 @@ var rezult = countBy(1, 10);
 var rezult1 = countBy(2, 5);
 console.log("countBy(1, 10) = [" + rezult.join(", ") + " ]");
 console.log("countBy(2, 5) = [" + rezult1.join(", ") + " ]");
+//====================================================================================
 //ДОБАВИТЬ КЛАСС В СТРОКУ
 var obj = { className: 'open menu' };
 function addClass(obj, cls) {
